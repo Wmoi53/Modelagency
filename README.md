@@ -119,6 +119,24 @@ See the [Multi-Tool Integrations](#-multi-tool-integrations) section below for f
 
 ---
 
+### ⚽ Soccer Business division (Modelagency addition)
+
+Seven agents built around the soccer-club flywheel (results → fans → revenue → investment → better squad) and its compounding math. They pair with the [`multiply`](https://github.com/Wmoi53/multiply) valuation and bid-notifier platform.
+
+| Agent | Role in the flywheel |
+|---|---|
+| Soccer Flywheel Strategist | Maps the loop, finds the bottleneck, models compounding |
+| Soccer Club Valuation Analyst | Transparent player and club valuation ranges |
+| Soccer Bid and Deal Strategist | Scores bids against value, decides who is notified |
+| Soccer Fan Growth Lead | Fan acquisition, retention and revenue per fan |
+| Soccer Investor Relations Lead | Honest investor and fan updates |
+| Soccer Platform Architect | Scales the multiply codebase |
+| Soccer Compliance and Risk Officer | Securities, FFP/PSR, AML and privacy flags |
+
+Install just these: `./scripts/install.sh --tool claude-code --division soccer-business`
+
+---
+
 ## 🎨 The Agency Roster
 
 ### 💻 Engineering Division
