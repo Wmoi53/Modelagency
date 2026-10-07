@@ -21,6 +21,7 @@ AGENT_DIRS=(
   engineering
   finance
   soccer-business
+  forecasting
   game-development
   gis
   healthcare
