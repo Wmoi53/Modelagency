@@ -137,6 +137,26 @@ Install just these: `./scripts/install.sh --tool claude-code --division soccer-b
 
 ---
 
+### 🔮 Forecasting division (Modelagency addition)
+
+Nine agents that run prediction markets inside a forum platform: sharper questions, better priors, aggregated crowd probabilities, mapped outcome trees and scored feedback. Each stage feeds the next: better questions and priors give better forecasts, scoring rewards the forecasters who are right, and a trusted aggregate draws in more of them. Play money or points by default; real-money features go through the Soccer Compliance and Risk Officer first.
+
+| Agent | Role in the loop |
+|---|---|
+| Forecast Market Question Designer | Resolvable questions, sources, deadlines, void rules |
+| Forecast Base-Rate Analyst | Reference-class priors with intervals |
+| Forecast Probability Aggregator | Track-record-weighted crowd probability |
+| Forecast Scenario and Outcome Mapper | Outcome trees, indicators, follow-on markets |
+| Forecast Market Maker | LMSR liquidity, odds conversion, fractional Kelly |
+| Forecast Calibration Coach | Brier scoring, calibration feedback, reputation |
+| Forecast Forum Thread Synthesizer | Turns discussion into evidence-based updates |
+| Forecast Resolution Arbiter | Fair, documented resolutions and disputes |
+| Forecast Soccer Outcome Forecaster | Match and season odds linked to club revenue |
+
+Install just these: `./scripts/install.sh --tool claude-code --division forecasting`
+
+---
+
 ## 🎨 The Agency Roster
 
 ### 💻 Engineering Division
