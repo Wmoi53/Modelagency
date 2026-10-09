@@ -15,6 +15,15 @@ python -m clubfin cashflow       # text Sankey in the terminal
 python -m unittest discover -s tests
 ```
 
+## Clickable elements
+
+- Sankey nodes, income and expense rows: drill down to that group or category's transactions
+- Profit & loss: click an expense group to expand its categories, click a category to drill down
+- KPI cards: Reinvested opens the Flywheel, Net worth opens Net worth
+- Month chips, Groups/Categories and Sankey/P&L toggles, sidebar and bottom-bar tabs
+- Uncategorized: per-row category picker that updates cash flow and the badge instantly (view only; use `categorize` to save)
+- Flywheel sliders
+
 ## All CLI commands
 
 `python -m clubfin commands -v` prints this list from the parser itself (`--json` for tooling), so it never drifts.
