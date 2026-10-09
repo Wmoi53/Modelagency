@@ -57,7 +57,7 @@ EXPENSE = {
     "Loan interest":       (  280_000, ["Stadium loan"], 0.0),
 }
 # Share of every month's surplus swept into the reinvestment fund.
-SWEEP = 0.85
+SWEEP = 0.95
 SEASON = {1: 1.15, 2: 1.15, 3: 1.2, 4: 1.2, 5: 1.1, 6: 0.35, 7: 0.35,
           8: 1.0, 9: 1.15, 10: 1.2, 11: 1.15, 12: 1.3}
 
