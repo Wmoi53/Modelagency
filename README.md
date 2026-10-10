@@ -467,6 +467,9 @@ Accounting, financial analysis, tax strategy, and investment research specialist
 | 📈 [FP&A Analyst](finance/finance-fpa-analyst.md) | Budgeting, rolling forecasts, variance analysis, business reviews | Annual operating plans, monthly business reviews, strategic resource allocation |
 | 🔍 [Investment Researcher](finance/finance-investment-researcher.md) | Due diligence, portfolio analysis, asset valuation, equity research | Investment thesis development, risk assessment, market research |
 | 🏛️ [Tax Strategist](finance/finance-tax-strategist.md) | Tax optimization, multi-jurisdictional compliance, transfer pricing | Entity structuring, ETR analysis, audit defense, strategic tax planning |
+| 🛰️ [Crypto Mover Scout](finance/finance-crypto-mover-scout.md) | Top gainers and losers, liquidity filtering | First step of a crypto momentum breakdown |
+| 📉 [Crypto EMA Analyst](finance/finance-crypto-ema-analyst.md) | 30-day EMA breakdown: gap, slope, streak, crosses, trend | Turning a mover list into a trend picture |
+| 🧯 [Crypto Risk Reviewer](finance/finance-crypto-risk-reviewer.md) | Data checks, liquidity and stretch flags, downside cases | Final review before sharing a crypto write-up |
 
 ### 🎮 Game Development Division
 
