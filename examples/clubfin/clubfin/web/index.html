@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClubFin</title>
+<style>
+:root{--bg:#f4f2ee;--card:#fff;--ink:#1d2430;--mute:#7b8494;--line:#eceae5;--accent:#f26a3d;--accent-bg:#fdeee6;--green:#18b77e;--blue:#2f6fdb;--amber:#eba51d;--rose:#e56b9a;--grey:#b3b3ae;--shadow:0 1px 2px rgba(20,25,35,.05)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#10151e;--card:#171e2a;--ink:#e8ecf3;--mute:#8d97a8;--line:#252e3d;--accent-bg:#2b1d19;--shadow:none}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+nav{padding:18px 14px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;margin:0 8px 18px}
+.logo{width:28px;height:28px;border-radius:50%;background:conic-gradient(var(--green),var(--blue),var(--green));display:grid;place-items:center;color:#fff;font-size:15px}
+nav button{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink)}
+nav button:hover{background:var(--line)}nav button.on{background:var(--accent-bg);color:var(--accent);font-weight:600}
+nav .badge{margin-left:auto;background:var(--accent-bg);color:var(--accent);border-radius:99px;font-size:11px;padding:0 7px}
+nav h6{margin:16px 10px 4px;font-size:10px;letter-spacing:.08em;color:var(--mute)}
+main{padding:22px 26px 40px;max-width:1180px;min-width:0}.seg{max-width:100%;overflow-x:auto}.seg button{white-space:nowrap}
+h1{font-size:20px;margin:0 0 4px}.sub{color:var(--mute);margin:0 0 18px}
+.card{background:var(--card);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:16px}
+.card h2{font-size:15px;margin:0;font-weight:600}
+.head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.seg{display:inline-flex;background:var(--bg);border-radius:9px;padding:3px;gap:2px}
+.seg button{all:unset;cursor:pointer;padding:4px 11px;border-radius:7px;font-size:12px;color:var(--mute)}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:var(--card);border-radius:12px;padding:12px 14px}.kpi b{display:block;font-size:18px}.kpi span{color:var(--mute);font-size:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+table{width:100%;border-collapse:collapse}td,th{padding:8px 4px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--mute);font-weight:500;font-size:12px}td.n,th.n{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+.row{display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:7px 0;font-size:13px}.row i{font-style:normal;color:var(--mute);width:48px;text-align:right}
+.track{height:5px;background:var(--line);border-radius:3px;margin:-3px 0 6px}.track div{height:100%;border-radius:3px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:8px}
+svg text{fill:var(--ink);font:11px system-ui}svg .m{fill:var(--mute);font-size:10px}
+.pill{padding:1px 8px;border-radius:99px;background:var(--bg);color:var(--mute);font-size:12px}
+label.s{display:grid;grid-template-columns:150px 1fr 60px;gap:10px;align-items:center;margin:8px 0}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.loop{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0 14px}.loop span{background:var(--accent-bg);color:var(--accent);padding:4px 10px;border-radius:99px;font-size:12px;font-weight:600}.loop em{color:var(--mute);font-style:normal}
+.note{color:var(--mute);font-size:12px}.pos{color:var(--green)}.neg{color:var(--ink)}
+.clk{cursor:pointer}.clk:hover{background:var(--bg)}svg .clk:hover{opacity:.8}.chev{display:inline-block;width:14px;color:var(--mute);transition:transform .15s}.chev.o{transform:rotate(90deg)}select{padding:4px 6px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--ink);font:inherit;font-size:12px}.x{all:unset;cursor:pointer;color:var(--mute);padding:2px 8px;border-radius:7px}.x:hover{background:var(--bg)}.desk{display:block}.mob{display:none}
+@media(max-width:820px){
+ .app{grid-template-columns:minmax(0,1fr)}
+ nav{position:fixed;bottom:0;left:0;right:0;top:auto;height:auto;flex-direction:row;justify-content:space-around;background:var(--card);border-top:1px solid var(--line);padding:6px 4px;z-index:9;overflow-x:auto}
+ nav .brand,nav h6,nav .prop{display:none}nav button{flex-direction:column;gap:2px;font-size:10px;padding:5px 8px;position:relative}nav .badge{position:absolute;top:0;right:0;margin:0}
+ main{padding:16px 14px 90px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}
+ label.s{grid-template-columns:1fr 50px}label.s input{grid-column:1/-1;order:3}
+ .desk-only{display:none}td,th{font-size:12px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+ <nav id="nav"></nav>
+ <main id="main"></main>
+</div>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const D=JSON.parse(document.getElementById('data').textContent);
+const CUR=D.currency||'£',CATS=D.categories;
+const COLORS={Squad:'#2f6fdb',Academy:'#18b77e',Stadium:'#eba51d','Fan growth':'#e56b9a',Operations:'#8a6fdc',Debt:'#7b8494',Uncategorized:'#b3b3ae',Savings:'#18b77e'};
+const fmt=(v,d=0)=>(v<0?'-':'')+CUR+Math.abs(v).toLocaleString('en-GB',{minimumFractionDigits:d,maximumFractionDigits:d});
+const short=v=>{const a=Math.abs(v);return (v<0?'-':'')+CUR+(a>=1e6?(a/1e6).toFixed(2)+'M':a>=1e3?(a/1e3).toFixed(1)+'k':a.toFixed(0))};
+const pct=v=>(v*100).toFixed(1)+'%';
+const el=(h)=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild};
+const st={tab:'cashflow',view:'groups',flow:matchMedia('(max-width:820px)').matches?'pl':'sankey',dist:'category',month:'all',drill:null,open:{}};
+const months=[...new Set(D.transactions.map(t=>t.date.slice(0,7)))].sort();
+const uncList=()=>D.transactions.filter(t=>t.category==='Uncategorized');
+
+function cashflow(month){
+ const inc={},grp={},cat={};let sav=0;
+ for(const t of D.transactions){
+  if(month!=='all'&&!t.date.startsWith(month))continue;
+  const c=CATS[t.category]||{type:'expense',group:'Uncategorized'};
+  if(c.type==='income')inc[t.category]=(inc[t.category]||0)+t.amount;
+  else if(c.type==='savings')sav+=-t.amount;
+  else{grp[c.group]=(grp[c.group]||0)-t.amount;cat[t.category]=(cat[t.category]||0)-t.amount}
+ }
+ const tin=Object.values(inc).reduce((a,b)=>a+b,0),tex=Object.values(grp).reduce((a,b)=>a+b,0);
+ return{inc,grp,cat,sav,tin,tex};
+}
+const sortE=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]);
+const colorOf=(name)=>{const g=(CATS[name]||{}).group;return g==='Income'?COLORS.Savings:COLORS[g]||COLORS[name]||'#b3b3ae'};
+
+/* ---------- Sankey ---------- */
+function sankey(cf,view){
+ const W=1000,H=Math.max(420,0),pad=6,top=40,bot=H-20,nodeW=12;
+ const left=sortE(cf.inc).map(([k,v])=>({k,v}));
+ const right=(view==='groups'?sortE(cf.grp):sortE(cf.cat)).map(([k,v])=>({k,v,c:view==='groups'?COLORS[k]:colorOf(k)}));
+ right.unshift({k:'Reinvestment fund',v:cf.sav,c:COLORS.Savings});
+ const total=cf.tin||1,scale=(bot-top-pad*Math.max(left.length,right.length))/total;
+ const place=(arr,x)=>{let y=top;arr.forEach(n=>{n.h=Math.max(1.5,n.v*scale);n.y=y;n.x=x;y+=n.h+pad});};
+ place(left,190);place(right,790);
+ const mid={x:490,y:top,h:total*scale};
+ let s='<svg viewBox="0 0 '+W+' '+(bot+10)+'" width="100%" role="img" aria-label="Cash flow Sankey">';
+ let ly=mid.y;left.forEach(n=>{
+  const c=COLORS.Savings,x0=n.x+nodeW,x1=mid.x,h=n.v*scale;
+  s+=`<path d="M${x0} ${n.y+n.h/2} C${(x0+x1)/2} ${n.y+n.h/2},${(x0+x1)/2} ${ly+h/2},${x1} ${ly+h/2}" stroke="${c}" stroke-opacity=".28" stroke-width="${Math.max(1,h)}" fill="none"/>`;ly+=h;});
+ let ry=mid.y;right.forEach(n=>{
+  const x0=mid.x+nodeW,x1=n.x,h=n.v*scale;
+  s+=`<path d="M${x0} ${ry+h/2} C${(x0+x1)/2} ${ry+h/2},${(x0+x1)/2} ${n.y+n.h/2},${x1} ${n.y+n.h/2}" stroke="${n.c}" stroke-opacity=".32" stroke-width="${Math.max(1,h)}" fill="none"/>`;ry+=h;});
+ left.forEach(n=>{s+=`<g class="clk" data-drill="cat:${n.k}"><rect x="${n.x}" y="${n.y}" width="${nodeW}" height="${n.h}" fill="${COLORS.Savings}" rx="2"/><text x="${n.x-8}" y="${n.y+n.h/2-2}" text-anchor="end" font-weight="600">${n.k}</text><text class="m" x="${n.x-8}" y="${n.y+n.h/2+10}" text-anchor="end">${short(n.v)} (${pct(n.v/total)})</text></g>`});
+ right.forEach(n=>{s+=`<g class="clk" data-drill="${n.k==='Reinvestment fund'||view!=='groups'?'cat':'group'}:${n.k}"><rect x="${n.x}" y="${n.y}" width="${nodeW}" height="${n.h}" fill="${n.c}" rx="2"/><text x="${n.x+nodeW+8}" y="${n.y+Math.max(n.h/2,5)-1}" font-weight="600">${n.k}</text><text class="m" x="${n.x+nodeW+8}" y="${n.y+Math.max(n.h/2,5)+10}">${short(n.v)} (${pct(n.v/total)})</text></g>`});
+ s+=`<rect x="${mid.x}" y="${mid.y}" width="${nodeW}" height="${mid.h}" fill="${COLORS.Savings}" rx="2"/><text x="${mid.x+6}" y="${mid.y-18}" text-anchor="middle" font-weight="700">Income</text><text class="m" x="${mid.x+6}" y="${mid.y-6}" text-anchor="middle">${short(total)}</text></svg>`;
+ return s;
+}
+
+/* ---------- views ---------- */
+function monthSeg(){return `<div class="seg" role="group">${['all',...months].map(m=>`<button data-month="${m}" class="${st.month===m?'on':''}">${m==='all'?'12 mo':m.slice(2)}</button>`).join('')}</div>`}
+function kpis(cf){
+ const nw=D.accounts.reduce((a,b)=>a+b.balance,0);
+ return `<div class="kpis"><div class="kpi"><span>Income</span><b>${short(cf.tin)}</b></div><div class="kpi"><span>Expenses</span><b>${short(-cf.tex)}</b></div><div class="kpi clk" data-tab="flywheel"><span>Reinvested ›</span><b>${short(cf.sav)} <small class="pill">${pct(cf.sav/(cf.tin||1))}</small></b></div><div class="kpi clk" data-tab="networth"><span>Net worth ›</span><b>${short(nw)}</b></div></div>`;
+}
+function plTable(cf){
+ const t=cf.tin||1;
+ let h=`<table><tr><th>Category</th><th class="n">% of income</th><th class="n">Amount</th></tr><tr><td><b>Income</b></td><td></td><td class="n"><b>${fmt(cf.tin,2)}</b></td></tr>`;
+ sortE(cf.inc).forEach(([k,v])=>h+=`<tr class="clk" data-drill="cat:${k}"><td style="padding-left:18px">${k}</td><td class="n">${pct(v/t)}</td><td class="n">${fmt(v,2)}</td></tr>`);
+ h+=`<tr style="background:var(--bg)"><td><b>Expenses</b></td><td class="n">${pct(cf.tex/t)}</td><td class="n"><b>${fmt(-cf.tex,2)}</b></td></tr>`;
+ sortE(cf.grp).forEach(([k,v])=>{const o=st.open[k];h+=`<tr class="clk" data-exp="${k}"><td><span class="chev ${o?'o':''}">›</span><span class="dot" style="background:${COLORS[k]}"></span>${k}</td><td class="n">${pct(v/t)}</td><td class="n">${fmt(-v,2)}</td></tr>`;
+  if(o)sortE(cf.cat).filter(([c])=>(CATS[c]||{}).group===k).forEach(([c,cv])=>h+=`<tr class="clk" data-drill="cat:${c}"><td style="padding-left:34px;color:var(--mute)">${c}</td><td class="n">${pct(cv/t)}</td><td class="n">${fmt(-cv,2)}</td></tr>`)});
+ h+=`<tr style="background:var(--bg)"><td><b>Reinvestment fund</b></td><td class="n">${pct(cf.sav/t)}</td><td class="n pos"><b>${fmt(cf.sav,2)}</b></td></tr></table>`;
+ return h;
+}
+function bars(entries,total,colorFn,kind='cat'){
+ return entries.map(([k,v])=>`<div class="row clk" data-drill="${k==='Reinvestment fund'?'cat':kind}:${k}"><span><span class="dot" style="background:${colorFn(k)}"></span>${k}</span><b>${fmt(v,2)}</b><i>${pct(v/total)}</i></div><div class="track"><div style="width:${Math.min(100,v/total*100*1.6)}%;background:${colorFn(k)}"></div></div>`).join('');
+}
+function drillPanel(){
+ const d=st.drill;if(!d)return'';const[kind,name]=d;
+ const rows=D.transactions.filter(t=>(st.month==='all'||t.date.startsWith(st.month))&&(kind==='group'?(CATS[t.category]||{}).group===name&&(CATS[t.category]||{}).type!=='savings':t.category===name)).slice().reverse();
+ const tot=rows.reduce((a,t)=>a+t.amount,0);
+ return `<div class="card" id="drill"><div class="head"><h2>${name} <span class="pill">${rows.length} transactions · ${fmt(tot)}</span></h2><button class="x" data-close="1" aria-label="Close">✕</button></div>${rows.length?`<div style="max-height:320px;overflow:auto"><table>${rows.slice(0,80).map(t=>`<tr><td>${t.date}</td><td>${t.desc}</td><td>${kind==='group'?`<span class="pill">${t.category}</span>`:''}</td><td class="n ${t.amount>0?'pos':''}">${fmt(t.amount,2)}</td></tr>`).join('')}</table></div>`:'<p class="note">No transactions.</p>'}</div>`;
+}
+function vCashflow(){
+ const cf=cashflow(st.month),t=cf.tin||1;
+ const inc=sortE(cf.inc),exp=st.view==='groups'?sortE(cf.grp):sortE(cf.cat);
+ return `<h1>Cash flow</h1><p class="sub">Where the money comes from and goes — and how much is fed back into the loop.</p>${monthSeg()}<div style="height:12px"></div>${kpis(cf)}
+ <div class="card"><div class="head"><h2>Where the money went</h2><span><span class="seg"><button data-view="groups" class="${st.view==='groups'?'on':''}">Groups</button><button data-view="categories" class="${st.view==='categories'?'on':''}">Categories</button></span> <span class="seg"><button data-flow="sankey" class="${st.flow==='sankey'?'on':''}">Sankey</button><button data-flow="pl" class="${st.flow==='pl'?'on':''}">Profit &amp; loss</button></span></span></div>
+ ${st.flow==='sankey'?'<div style="overflow-x:auto"><div style="min-width:640px">'+sankey(cf,st.view)+'</div></div>':plTable(cf)}</div>
+ ${drillPanel()}<p class="note">Tip: click any chart node, row or group to see its transactions.</p><div class="two"><div class="card"><div class="head"><h2>Income</h2></div>${bars(inc,t,colorOf)}</div>
+ <div class="card"><div class="head"><h2>Expenses</h2></div>${bars([['Reinvestment fund',cf.sav],...exp],t,k=>k==='Reinvestment fund'?COLORS.Savings:(st.view==='groups'?COLORS[k]:colorOf(k)),st.view==='groups'?'group':'cat')}</div></div>`;
+}
+function vSpending(){
+ const rows=months.map(m=>[m,cashflow(m)]);const max=Math.max(...rows.map(r=>r[1].tin));
+ const W=700,H=220,bw=W/rows.length;
+ let svg=`<svg viewBox="0 0 ${W} ${H+24}" width="100%">`;
+ rows.forEach(([m,c],i)=>{const hi=c.tin/max*H,he=c.tex/max*H,hs=c.sav/max*H,x=i*bw;
+  svg+=`<rect x="${x+4}" y="${H-hi}" width="${bw/2-6}" height="${hi}" fill="${COLORS.Savings}" opacity=".35" rx="2"/><rect x="${x+bw/2}" y="${H-he-hs}" width="${bw/2-6}" height="${he}" fill="${COLORS.Squad}" rx="2"/><rect x="${x+bw/2}" y="${H-hs}" width="${bw/2-6}" height="${hs}" fill="${COLORS.Savings}" rx="2"/><text class="m" x="${x+bw/2}" y="${H+14}" text-anchor="middle">${m.slice(2)}</text>`});
+ svg+='</svg>';
+ return `<h1>Spending</h1><p class="sub">Light green is income. The stacked bar is expenses plus what was reinvested.</p><div class="card">${svg}</div>
+ <div class="card"><table><tr><th>Month</th><th class="n">Income</th><th class="n">Expenses</th><th class="n">Reinvested</th><th class="n">Rate</th></tr>${rows.map(([m,c])=>`<tr><td>${m}</td><td class="n">${fmt(c.tin)}</td><td class="n">${fmt(-c.tex)}</td><td class="n pos">${fmt(c.sav)}</td><td class="n">${pct(c.sav/(c.tin||1))}</td></tr>`).join('')}</table></div>`;
+}
+function vNetworth(){
+ const h=D.networth_history||[];if(!h.length)return'<h1>Net worth</h1>';
+ const W=700,H=220,min=Math.min(...h.map(p=>p.value))*.97,max=Math.max(...h.map(p=>p.value));
+ const pts=h.map((p,i)=>[i/(h.length-1)*W,H-(p.value-min)/(max-min)*H]);
+ const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+ const a=D.accounts.filter(x=>x.balance>=0).reduce((s,x)=>s+x.balance,0),l=D.accounts.filter(x=>x.balance<0).reduce((s,x)=>s+x.balance,0);
+ const g=h[h.length-1].value/h[0].value;
+ return `<h1>Net worth</h1><p class="sub">Compounding in action: ${fmt(h[0].value)} → ${fmt(h[h.length-1].value)} (${g.toFixed(2)}x in ${h.length} months).</p>
+ <div class="kpis"><div class="kpi"><span>Assets</span><b>${short(a)}</b></div><div class="kpi"><span>Liabilities</span><b>${short(l)}</b></div><div class="kpi"><span>Net worth</span><b>${short(a+l)}</b></div><div class="kpi"><span>Growth</span><b>${pct(g-1)}</b></div></div>
+ <div class="card"><svg viewBox="0 0 ${W} ${H+20}" width="100%"><path d="${line} L${W} ${H} L0 ${H} Z" fill="${COLORS.Savings}" opacity=".12"/><path d="${line}" fill="none" stroke="${COLORS.Savings}" stroke-width="2.5"/>${pts.map((p,i)=>i%3===0||i===pts.length-1?`<text class="m" x="${p[0]}" y="${H+14}" text-anchor="middle">${h[i].month.slice(2)}</text>`:'').join('')}</svg></div>`;
+}
+function vAccounts(){
+ return `<h1>Accounts</h1><p class="sub">Cash, the reinvestment fund, assets and debt.</p><div class="card"><table><tr><th>Account</th><th>Type</th><th class="n">Balance</th></tr>${D.accounts.map(a=>`<tr><td>${a.name}</td><td><span class="pill">${a.kind}</span></td><td class="n">${fmt(a.balance)}</td></tr>`).join('')}</table></div>`;
+}
+function txTable(rows){
+ return `<div class="card" style="overflow-x:auto"><table><tr><th>Date</th><th>Description</th><th>Category</th><th class="n">Amount</th></tr>${rows.map(t=>`<tr><td>${t.date}</td><td>${t.desc}</td><td><span class="pill">${t.category}</span></td><td class="n ${t.amount>0?'pos':''}">${fmt(t.amount,2)}</td></tr>`).join('')}</table></div>`;
+}
+function vTransactions(){const q=(st.q||'').toLowerCase();const rows=D.transactions.filter(t=>!q||(t.desc+t.category).toLowerCase().includes(q)).slice(-120).reverse();
+ return `<h1>Transactions</h1><p class="sub">Latest ${rows.length}.</p><input id="q" placeholder="Search…" value="${st.q||''}" style="width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);margin-bottom:12px">${txTable(rows)}`}
+function vUnc(){const u=uncList();const opts=Object.keys(CATS).filter(c=>c!=='Uncategorized').map(c=>`<option>${c}</option>`).join('');
+ return `<h1>Uncategorized</h1><p class="sub">Pick a category for each item — cash flow updates instantly (this view only; to save use <code>python -m clubfin categorize ID CATEGORY</code>).</p><div class="card">${u.length?`<table><tr><th>Date</th><th>Description</th><th class="n">Amount</th><th>Category</th></tr>${u.map(t=>`<tr><td>${t.date}</td><td>${t.desc}</td><td class="n">${fmt(t.amount,2)}</td><td><select data-cat="${t.id}"><option value="">Choose…</option>${opts}</select></td></tr>`).join('')}</table>`:'<p>All caught up ✓</p>'}</div>`}
+function vProps(){return `<h1>Properties</h1><p class="sub">Stadium, training ground and academy are the assets the flywheel invests into.</p><div class="card"><table>${D.accounts.filter(a=>a.kind==='asset').map(a=>`<tr><td>${a.name}</td><td class="n">${fmt(a.balance)}</td></tr>`).join('')}</table></div>`}
+function vFly(){
+ const cf=cashflow('all');const f=st.fly||(st.fly={rev:Math.round(cf.tin),re:25,roi:30,tpy:1,yrs:5});
+ const g=f.re/100*f.roi/100,n=f.tpy*f.yrs;
+ const run=(mult)=>{const gg=g*mult;return Array.from({length:n+1},(_,i)=>f.rev*Math.pow(1+gg,i))};
+ const sc={bear:run(.5),base:run(1),bull:run(1.5)},maxv=Math.max(...sc.bull),W=700,H=220;
+ const cs={bear:'#7b8494',base:COLORS.Savings,bull:COLORS.Squad};
+ const path=a=>a.map((v,i)=>(i?'L':'M')+(i/n*W).toFixed(1)+' '+(H-(v-f.rev*0.95)/(maxv-f.rev*0.95)*H).toFixed(1)).join(' ');
+ const sl=(id,lab,min,max,step,val,unit)=>`<label class="s">${lab}<input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}"><b>${val}${unit}</b></label>`;
+ return `<h1>Flywheel</h1><p class="sub">Everything is connected: results lift fans, fans lift revenue, revenue funds the squad, the squad lifts results. Each turn compounds.</p>
+ <div class="loop"><span>Results</span><em>→</em><span>Fans</span><em>→</em><span>Revenue</span><em>→</em><span>Investment</span><em>→</em><span>Better squad</span><em>↺</em></div>
+ <div class="card"><div class="head"><h2>Growth per turn g = reinvest share × ROI = ${pct(g)}</h2></div>
+ ${sl('re','Reinvest share',5,60,1,f.re,'%')}${sl('roi','ROI per turn',5,80,1,f.roi,'%')}${sl('tpy','Turns per year',1,4,1,f.tpy,'')}${sl('yrs','Years',1,10,1,f.yrs,'')}
+ <svg viewBox="0 0 ${W} ${H+8}" width="100%" style="margin-top:10px">${Object.entries(sc).map(([k,a])=>`<path d="${path(a)}" fill="none" stroke="${cs[k]}" stroke-width="2.5"/>`).join('')}</svg>
+ <p class="note">${Object.keys(sc).map(k=>`<span class="dot" style="background:${cs[k]}"></span>${k}`).join(' &nbsp; ')}</p></div>
+ <div class="card"><table><tr><th>Case</th><th class="n">g / turn</th><th class="n">Multiple</th><th class="n">Revenue after ${f.yrs}y</th></tr>${Object.entries({bear:.5,base:1,bull:1.5}).map(([k,m])=>`<tr><td>${k}</td><td class="n">${pct(g*m)}</td><td class="n">${Math.pow(1+g*m,n).toFixed(2)}x</td><td class="n">${fmt(sc[k][n])}</td></tr>`).join('')}</table>
+ <p class="note">Assumed rates, not forecasts. 10% per turn for 5 turns is 1.61x, not 1.5x. Sport is volatile: relegation, injuries and cup runs all move these numbers.</p></div>`;
+}
+const TABS=[['transactions','Transactions','▤',vTransactions,0],['cashflow','Cash flow','⇅',vCashflow],['spending','Spending','◐',vSpending],['networth','Net worth','↗',vNetworth],['accounts','Accounts','▥',vAccounts],['flywheel','Flywheel','↺',vFly],['uncategorized','Uncategorized','?',vUnc,0]];
+function render(){
+ document.getElementById('nav').innerHTML=`<div class="brand"><span class="logo">⚽</span>ClubFin</div>`+TABS.map(t=>`<button data-tab="${t[0]}" class="${st.tab===t[0]?'on':''}"><span>${t[2]}</span>${t[1]}${t[0]==='uncategorized'&&uncList().length?`<span class="badge">${uncList().length}</span>`:''}</button>`).join('')+`<h6 class="prop">PROPERTIES</h6>`+D.properties.map(p=>`<button class="prop" data-tab="props"><span>⌂</span>${p}</button>`).join('');
+ const t=TABS.find(x=>x[0]===st.tab);document.getElementById('main').innerHTML=st.tab==='props'?vProps():t[3]();
+}
+document.addEventListener('click',e=>{
+ const dr=e.target.closest('[data-drill]');if(dr){const i=dr.dataset.drill.indexOf(':');st.drill=[dr.dataset.drill.slice(0,i),dr.dataset.drill.slice(i+1)];render();const p=document.getElementById('drill');p&&p.scrollIntoView({block:'nearest',behavior:'smooth'});return}
+ const ex=e.target.closest('[data-exp]');if(ex){st.open[ex.dataset.exp]=!st.open[ex.dataset.exp];render();return}
+ const b=e.target.closest('button,[data-tab]');if(!b)return;const d=b.dataset;
+ if(d.close){st.drill=null}else if(d.tab){st.tab=d.tab;st.drill=null}else if(d.view)st.view=d.view;else if(d.flow)st.flow=d.flow;else if(d.month)st.month=d.month;else return;render();});
+document.addEventListener('change',e=>{const id=e.target.dataset&&e.target.dataset.cat;if(!id||!e.target.value)return;const t=D.transactions.find(x=>x.id==id);t.category=e.target.value;render()});
+document.addEventListener('input',e=>{if(e.target.id==='q'){st.q=e.target.value;const pos=e.target.selectionStart;render();const q=document.getElementById('q');q.focus();q.setSelectionRange(pos,pos);return}
+ const m={re:'re',roi:'roi',tpy:'tpy',yrs:'yrs'}[e.target.id];if(m){st.fly[m]=+e.target.value;render();const q=document.getElementById(e.target.id);q&&q.focus()}});
+render();
+</script>
+</body>
+</html>
