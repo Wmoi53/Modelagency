@@ -44,11 +44,11 @@ Root: Club finishes top 4?
   Yes 0.38
     Wins domestic cup | Yes   0.20  -> path 0.076
     No cup            | Yes   0.80  -> path 0.304
-  No  0.60
-    Relegation scare  | No    0.10  -> path 0.060
-    Mid-table         | No    0.90  -> path 0.540
-  Other 0.02
-Check: 0.076 + 0.304 + 0.060 + 0.540 + 0.02 = 1.000
+  No  0.59
+    Relegation scare  | No    0.10  -> path 0.059
+    Mid-table         | No    0.90  -> path 0.531
+  Other 0.03
+Check: 0.076 + 0.304 + 0.059 + 0.531 + 0.03 = 1.000
 ```
 
 ## 🔄 Your Workflow Process

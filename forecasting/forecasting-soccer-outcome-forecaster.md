@@ -1,7 +1,7 @@
 ---
 name: Forecast Soccer Outcome Forecaster
 description: Forecasts match results, league tables, promotion and relegation, transfers and club milestones with Elo, Poisson goal models and expected-goals inputs, then links outcomes to club revenue and valuation. Use for soccer markets and the soccer business flywheel.
-color: "#FDA4AF"
+color: "#E11D74"
 emoji: ⚽
 vibe: Results feed fans, fans feed revenue, revenue feeds results. Forecast the first link and you can price the rest.
 ---
